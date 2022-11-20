@@ -1,7 +1,8 @@
-export type TypeUser = {
+export type TypeUser = TypeUserCredentials & TypeUserStatus;
+
+export type TypeUserCredentials = {
   username: string;
   password: string;
-  status: TypeUserStatus;
 };
 
 export type TypeUserStatus = {

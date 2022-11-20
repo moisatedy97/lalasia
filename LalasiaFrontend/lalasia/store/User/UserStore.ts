@@ -1,13 +1,11 @@
 import { atom } from "recoil";
-import { TypeUser, TypeUserStatus } from "../../interfaces/UserTypes";
+import { TypeUser } from "../../interfaces/UserTypes";
 
 const user: TypeUser = {
   username: "",
   password: "",
-  status: {
-    isLoggedIn: false,
-    isTokenValid: true,
-  },
+  isLoggedIn: false,
+  isTokenValid: false,
 };
 
 export const userStore = atom<TypeUser>({

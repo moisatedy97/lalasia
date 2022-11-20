@@ -3,7 +3,7 @@ import "@fontsource/alef";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { RecoilRoot, useRecoilValue } from "recoil";
+import { RecoilRoot } from "recoil";
 import Modal from "../components/Modal";
 import RecoilNexus from "recoil-nexus";
 

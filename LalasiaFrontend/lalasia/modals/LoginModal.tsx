@@ -3,9 +3,23 @@ import logo from "../assets/HomePage/Lalasia Logo.svg";
 import Image from "next/image";
 import { ImageConst } from "../constants/Constants";
 import { modalActions } from "../thunk/ModalActions";
+import axios, { AxiosError } from "axios";
+import { useRecoilState } from "recoil";
+import { userStore } from "../store/User/UserStore";
+import { TypeUser } from "../interfaces/UserTypes";
+import { error } from "console";
 
 const LoginModal = () => {
+  const [user, setUser] = useRecoilState<TypeUser>(userStore);
+
   const handleClick = () => {
+    axios
+      .get("http://localhost:5000/lalasia/login", {
+        params: { username: user.username, password: user.password },
+      })
+      .then((response) => console.log(response))
+      .catch((error: AxiosError) => console.log(error));
+
     modalActions.HIDE_MODAL();
   };
 
@@ -19,8 +33,22 @@ const LoginModal = () => {
               alt={ImageConst.LOGO_IMAGE}
               className="w-14"
             ></Image>
-            <input type="text" className="login-input" placeholder="Username" />
-            <input type="text" className="login-input" placeholder="Password" />
+            <input
+              type="text"
+              className="login-input"
+              placeholder="Username"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setUser({ ...user, username: event.target.value })
+              }
+            />
+            <input
+              type="text"
+              className="login-input"
+              placeholder="Password"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setUser({ ...user, password: event.target.value })
+              }
+            />
             <button
               className="h-10 bg-lalasia-primary w-full rounded text-xl font-semibold shadow-md"
               onClick={handleClick}
