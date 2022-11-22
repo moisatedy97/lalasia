@@ -7,15 +7,15 @@ import axios, { AxiosError } from "axios";
 import { useRecoilState } from "recoil";
 import { userStore } from "../store/User/UserStore";
 import { TypeUser } from "../interfaces/UserTypes";
-import { error } from "console";
 
 const LoginModal = () => {
   const [user, setUser] = useRecoilState<TypeUser>(userStore);
 
   const handleClick = () => {
     axios
-      .get("http://localhost:5000/lalasia/login", {
-        params: { username: user.username, password: user.password },
+      .post("http://localhost:5000/lalasia/create", {
+        username: user.username,
+        password: user.password,
       })
       .then((response) => console.log(response))
       .catch((error: AxiosError) => console.log(error));
@@ -27,7 +27,7 @@ const LoginModal = () => {
     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
       <div className="fixed inset-0 z-10 overflow-y-auto">
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <div className="flex flex-col justify-start items-center gap-4 w-1/4 p-24 bg-white rounded-xl shadow-xl">
+          <div className="flex w-1/4 flex-col items-center justify-start gap-4 rounded-xl bg-white p-24 shadow-xl">
             <Image
               src={logo}
               alt={ImageConst.LOGO_IMAGE}
@@ -50,7 +50,7 @@ const LoginModal = () => {
               }
             />
             <button
-              className="h-10 bg-lalasia-primary w-full rounded text-xl font-semibold shadow-md"
+              className="h-10 w-full rounded bg-lalasia-primary text-xl font-semibold shadow-md"
               onClick={handleClick}
             >
               Log In

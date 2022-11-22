@@ -22,14 +22,14 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center px-16 py-5">
+      <div className="flex flex-row items-center justify-between py-4">
         <div className="flex flex-row items-center gap-2">
           <Link href={RootingConst.ROOT_HOME}>
             <Image src={logo} alt={ImageConst.LOGO_IMAGE}></Image>
           </Link>
           <h2>Lalasia</h2>
         </div>
-        <div className="flex flex-row gap-20">
+        <div className="flex flex-row space-x-24">
           <Link href={RootingConst.ROOT_PRODUCT}>
             <p>Product</p>
           </Link>

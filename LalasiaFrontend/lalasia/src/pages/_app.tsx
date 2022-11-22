@@ -11,12 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
       <RecoilNexus />
-      <>
+      <div className="container mx-auto">
         <Modal />
         <Navbar />
         <Component {...pageProps} />
         <Footer />
-      </>
+      </div>
     </RecoilRoot>
   );
 }
