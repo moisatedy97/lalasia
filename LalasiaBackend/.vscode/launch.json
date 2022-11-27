@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Nest Framework Debug",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}\\lalasia\\src\\main.ts",
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "console": "integratedTerminal",
+            "outFiles": ["${workspaceFolder}/**/*.js", "!**/node_modules/**"]
+        }
+    ]
+}
